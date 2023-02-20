@@ -3,10 +3,12 @@ package com.example.adorno.modelo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Entity
 @Builder
+@Data
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
