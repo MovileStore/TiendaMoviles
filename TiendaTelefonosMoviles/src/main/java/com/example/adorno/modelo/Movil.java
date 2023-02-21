@@ -16,7 +16,7 @@ public class Movil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Marca")
     private Marca marca;
     private String nombre;
@@ -24,13 +24,13 @@ public class Movil {
     @Column(name = "ALMACENAMIENTO", nullable = false)
     private int almacenamiento;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Pantalla")
     private Pantalla pantalla;
 
     @Column(name = "PULGADAS_PANTALLA", nullable = false)
     private Float pulgadasPantalla;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Procesador")
     private Procesador procesador;
 
