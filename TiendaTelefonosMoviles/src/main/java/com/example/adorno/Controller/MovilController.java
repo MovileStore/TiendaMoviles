@@ -28,8 +28,8 @@ public class MovilController {
     }
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
-    @GetMapping("/getMovilById")
-    public ResponseEntity<Movil> getMovilById(@RequestParam Long id) {
+    @GetMapping("/getMovilById/{id}")
+    public ResponseEntity<Movil> getMovilById(@PathVariable("id") Long id) {
         Optional<Movil> movil = movilService.getMovilById(id);
         return movil.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
@@ -37,40 +37,34 @@ public class MovilController {
 
     @PostMapping("/addMovil")
     public ResponseEntity<Movil> addMovil(@RequestBody Movil movil) {
-        Movil newMovil = movilService.crearMovil(movil);
-        return new ResponseEntity<>(newMovil, HttpStatus.CREATED);
-
-//        return movilService.addMovil(movil).map((newMovil) ->
-//                        new ResponseEntity<>(newMovil, HttpStatus.CREATED))
-//                .orElseGet(() ->
-//                        new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE));
+        return movilService.addMovil(movil).map((newMovil) -> new ResponseEntity<>(newMovil, HttpStatus.CREATED)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE));
     }
 
     @PutMapping("/updateMovil/{id}")
     public ResponseEntity<UpdateMovilRequest> updateMovil(@PathVariable Long id, @RequestBody UpdateMovilRequest movilUpdate) {
         return null;
     }
-    
+
     //CAMBIOS DE MARIO REVISAR
     @GetMapping("/get/getMovilesByMarca/{marca}")
-    public ResponseEntity<List<Movil>> getMovilesByMarca(@PathVariable String marca){
-        if(movilService.getMovilesByMarca(marca).isEmpty()){
+    public ResponseEntity<List<Movil>> getMovilesByMarca(@PathVariable("marca") String marca) {
+        if (movilService.getMovilesByMarca(marca).isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<List<Movil>>(movilService.getMovilesByMarca(marca).get(), HttpStatus.OK);
+        return new ResponseEntity<>(movilService.getMovilesByMarca(marca).get(), HttpStatus.OK);
     }
-    
+
     @GetMapping("/get/getMovilesByPrecio/{min}-{max}")
-    public ResponseEntity<List<Movil>> getMovilesByPrecio(@PathVariable float min, @PathVariable float max){
-        if(movilService.getMovilesByPrecio(min, max).isEmpty()){
+    public ResponseEntity<List<Movil>> getMovilesByPrecio(@PathVariable("min") float min, @PathVariable("max") float max) {
+        if (movilService.getMovilesByPrecio(min, max).isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(movilService.getMovilesByPrecio(min, max).get(), HttpStatus.OK);
     }
-    
+
     @GetMapping("/get/getMovilesByRam/{min}-{max}")
-    public ResponseEntity<List<Movil>> getMovilesByRAM(@PathVariable float min, @PathVariable float max){
-        if(movilService.getMovilesByRAM(min, max).isEmpty()){
+    public ResponseEntity<List<Movil>> getMovilesByRAM(@PathVariable("min") float min, @PathVariable("max") float max) {
+        if (movilService.getMovilesByRAM(min, max).isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(movilService.getMovilesByRAM(min, max).get(), HttpStatus.OK);

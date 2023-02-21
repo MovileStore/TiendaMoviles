@@ -24,10 +24,6 @@ public class MovilService {
     }
 
 
-    public Movil crearMovil(Movil movil) {
-        return this.movilRepository.save(movil);
-    }
-
     public Optional<Movil> addMovil(@NotNull Movil movil) {
         if (!movilRepository.existsById(movil.getId())) {
             movilRepository.save(movil);
@@ -38,26 +34,22 @@ public class MovilService {
 
     //CAMBIOS DE MARIO REVISAR
     public Optional<List<Movil>> getMovilesByMarca(String marca) {
-        return Optional.ofNullable(movilRepository
-                .findByMarca(marca));
+        return Optional.ofNullable(movilRepository.findByMarcaNombre(marca));
     }
 
-    public Optional<List<Movil>> getMovilesByPrecio(float min, float max){
-    	
-        return Optional.ofNullable(movilRepository
-        		.findByPrecioGreaterThanAndLessThan(min, max));
+    public Optional<List<Movil>> getMovilesByPrecio(float min, float max) {
+
+        return Optional.ofNullable(movilRepository.findByPrecioGreaterThanAndPrecioLessThan(min, max));
     }
-    
-    public Optional<List<Movil>> getMovilesByRAM(float min, float max){
-    	
-    	return Optional.ofNullable(movilRepository
-    			.findByRamGreaterThanAndLessThan(min, max));
+
+    public Optional<List<Movil>> getMovilesByRAM(float min, float max) {
+
+        return Optional.ofNullable(movilRepository.findByRamGreaterThanAndRamLessThan(min, max));
     }
-    
-    public Optional<List<Movil>> getMovilesWithNFC(){
-    	
-        return Optional.ofNullable(movilRepository
-        		.findAllByNfcState());
+
+    public Optional<List<Movil>> getMovilesWithNFC(Boolean nfc) {
+
+        return Optional.ofNullable(movilRepository.findAllByNfcIs(nfc));
     }
 
 }

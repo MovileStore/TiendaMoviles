@@ -1,18 +1,20 @@
 package com.example.adorno.repositorios;
 
-import java.util.List;
-
+import com.example.adorno.modelo.Movil;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.adorno.modelo.Movil;
+import java.util.List;
 
 @Repository
 public interface MovilRepository extends CrudRepository<Movil, Long> {
-	//CAMBIOS DE MARIO REVISAR
-	List<Movil> findById(long id);
-	List<Movil> findByMarca(String marca);
-    List<Movil> findByPrecioGreaterThanAndLessThan(float min, float max);
-    List<Movil> findByRamGreaterThanAndLessThan(float min, float max);
-    List<Movil> findAllByNfcState();
+    //CAMBIOS DE MARIO REVISAR
+
+    List<Movil> findByMarcaNombre(String marca);
+
+    List<Movil> findByPrecioGreaterThanAndPrecioLessThan(float min, float max);
+
+    List<Movil> findByRamGreaterThanAndRamLessThan(float min, float max);
+
+    List<Movil> findAllByNfcIs(boolean nfc);
 }
