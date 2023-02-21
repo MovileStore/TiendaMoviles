@@ -1,7 +1,10 @@
 package com.example.adorno.modelo;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
 
 @Entity
 @Data
@@ -10,13 +13,15 @@ public class Marca {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NonNull
+
     String nombre;
 
-    public Marca() {}
+    public Marca() {
+    }
 
-    public Marca(long id, @NonNull String nombre) {
-        this.id = id;
+    public Marca(String nombre) {
         this.nombre = nombre;
     }
+
+
 }

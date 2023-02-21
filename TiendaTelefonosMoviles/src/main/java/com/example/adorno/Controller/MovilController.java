@@ -31,19 +31,19 @@ public class MovilController {
     @GetMapping("/getMovilById")
     public ResponseEntity<Movil> getMovilById(@RequestParam Long id) {
         Optional<Movil> movil = movilService.getMovilById(id);
-        return movil.map(value ->
-                        new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() ->
-                        new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return movil.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
     }
 
     @PostMapping("/addMovil")
     public ResponseEntity<Movil> addMovil(@RequestBody Movil movil) {
-        return movilService.addMovil(movil).map((newMovil) ->
-                        new ResponseEntity<>(newMovil, HttpStatus.CREATED))
-                .orElseGet(() ->
-                        new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE));
+        Movil newMovil = movilService.crearMovil(movil);
+        return new ResponseEntity<>(newMovil, HttpStatus.CREATED);
+
+//        return movilService.addMovil(movil).map((newMovil) ->
+//                        new ResponseEntity<>(newMovil, HttpStatus.CREATED))
+//                .orElseGet(() ->
+//                        new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE));
     }
 
     @PutMapping("/updateMovil/{id}")

@@ -23,6 +23,11 @@ public class MovilService {
         return (List<Movil>) movilRepository.findAll();
     }
 
+
+    public Movil crearMovil(Movil movil) {
+        return this.movilRepository.save(movil);
+    }
+
     public Optional<Movil> addMovil(@NotNull Movil movil) {
         if (!movilRepository.existsById(movil.getId())) {
             movilRepository.save(movil);

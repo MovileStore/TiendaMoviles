@@ -30,9 +30,9 @@ class TiendaTelefonosMovilesApplicationTests {
     @Test
     void contextLoads() {
 
-        Pantalla pantalla1 = new Pantalla(1, "Amoled");
-        Marca marca1 = new Marca(1, "Samsung");
-        Procesador procesador1 = new Procesador(1, 4, "Snapdragon", 123);
+        Pantalla pantalla1 = new Pantalla("Amoled");
+        Marca marca1 = new Marca("Samsung");
+        Procesador procesador1 = new Procesador(4, "Snapdragon", 123);
 
         Movil m1 = new Movil(1, "s23", marca1, "20/20/20", 6, 12, 5000, pantalla1, 6, procesador1, 64, 12, 12, 4, 4, true, 600);
         //Movil m1 = new Movil(1, "s23", "20/20/20", 12, 500, 5000, 5, 6, 4, 1, 3, 24, true, 1300, marca1, pantalla1, procesador1);
