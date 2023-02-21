@@ -50,5 +50,30 @@ public class MovilController {
     public ResponseEntity<UpdateMovilRequest> updateMovil(@PathVariable Long id, @RequestBody UpdateMovilRequest movilUpdate) {
         return null;
     }
+    
+    //CAMBIOS DE MARIO REVISAR
+    @GetMapping("/get/marca/{marca}")
+    public ResponseEntity<List<Movil>> getMovilesByMarca(@PathVariable String marca){
+        if(movilService.getMovilesByMarca(marca).isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<Movil>>(movilService.getMovilesByMarca(marca).get(), HttpStatus.OK);
+    }
+    
+    @GetMapping("/get/precio/{min}-{max}")
+    public ResponseEntity<List<Movil>> getMovilesByPrecio(@PathVariable float min, @PathVariable float max){
+        if(movilService.getMovilesByPrecio(min, max).isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(movilService.getMovilesByPrecio(min, max).get(), HttpStatus.OK);
+    }
+    
+    @GetMapping("/get/ram/{min}-{max}")
+    public ResponseEntity<List<Movil>> getMovilesByRAM(@PathVariable float min, @PathVariable float max){
+        if(movilService.getMovilesByRAM(min, max).isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(movilService.getMovilesByRAM(min, max).get(), HttpStatus.OK);
+    }
 
 }

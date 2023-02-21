@@ -36,5 +36,28 @@ public class MovilService {
         return Optional.empty();
     }
 
+    //CAMBIOS DE MARIO REVISAR
+    public Optional<List<Movil>> getMovilesByMarca(String marca) {
+        return Optional.ofNullable(movilRepository
+                .findByMarca(marca));
+    }
+
+    public Optional<List<Movil>> getMovilesByPrecio(float min, float max){
+    	
+        return Optional.ofNullable(movilRepository
+        		.findByPrecioGreaterThanAndLessThan(min, max));
+    }
+    
+    public Optional<List<Movil>> getMovilesByRAM(float min, float max){
+    	
+    	return Optional.ofNullable(movilRepository
+    			.findByRamGreaterThanAndLessThan(min, max));
+    }
+    
+    public Optional<List<Movil>> getMovilesWithNFC(){
+    	
+        return Optional.ofNullable(movilRepository
+        		.findAllByNfcState());
+    }
 
 }
