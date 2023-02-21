@@ -52,7 +52,7 @@ public class MovilController {
     }
     
     //CAMBIOS DE MARIO REVISAR
-    @GetMapping("/get/marca/{marca}")
+    @GetMapping("/get/getMovilesByMarca/{marca}")
     public ResponseEntity<List<Movil>> getMovilesByMarca(@PathVariable String marca){
         if(movilService.getMovilesByMarca(marca).isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -60,7 +60,7 @@ public class MovilController {
         return new ResponseEntity<List<Movil>>(movilService.getMovilesByMarca(marca).get(), HttpStatus.OK);
     }
     
-    @GetMapping("/get/precio/{min}-{max}")
+    @GetMapping("/get/getMovilesByPrecio/{min}-{max}")
     public ResponseEntity<List<Movil>> getMovilesByPrecio(@PathVariable float min, @PathVariable float max){
         if(movilService.getMovilesByPrecio(min, max).isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ public class MovilController {
         return new ResponseEntity<>(movilService.getMovilesByPrecio(min, max).get(), HttpStatus.OK);
     }
     
-    @GetMapping("/get/ram/{min}-{max}")
+    @GetMapping("/get/getMovilesByRam/{min}-{max}")
     public ResponseEntity<List<Movil>> getMovilesByRAM(@PathVariable float min, @PathVariable float max){
         if(movilService.getMovilesByRAM(min, max).isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
