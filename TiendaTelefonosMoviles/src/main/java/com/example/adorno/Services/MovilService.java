@@ -1,5 +1,6 @@
 package com.example.adorno.Services;
 
+import com.example.adorno.filter.MovilFilter;
 import com.example.adorno.modelo.Movil;
 import com.example.adorno.repositorios.MovilRepository;
 import org.jetbrains.annotations.NotNull;
@@ -50,6 +51,13 @@ public class MovilService {
     public Optional<List<Movil>> getMovilesWithNFC(Boolean nfc) {
 
         return Optional.ofNullable(movilRepository.findAllByNfcIs(nfc));
+    }
+    
+    public Optional<List<Movil>> getMovileFilter(MovilFilter movilFilter){
+    	movilRepository.findByPrecioGreaterThanAndPrecioLessThan(movilFilter.getPrecio().getMin(),movilFilter.getPrecio().getMax())
+    			.filter((marca)->{movilFilter.getMarca().equals(movil.getMarca());})
+    			.filter((ram)->{movilFilter.getRam().isBetween(movil.getRam());})
+    			.filter((nfc)->{movilFilter.hasNfc().equals(movil.getNfc);});
     }
 
 }
