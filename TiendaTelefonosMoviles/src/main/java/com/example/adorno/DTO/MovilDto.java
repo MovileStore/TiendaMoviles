@@ -5,13 +5,11 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
+import com.example.adorno.modelo.Marca;
+
 /**
  * A DTO for the {@link com.example.adorno.modelo.Movil} entity
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
 
-public record MovilDto(String marca, String nombre, Long nucleos, long ram, int almacenamiento,
-                       float precio) implements Serializable {
-
+public record MovilDto(Marca marca, String modelo, ProcesadorDto nucleosProcesador, long almacenamiento, long ram, float precio) {
 }
