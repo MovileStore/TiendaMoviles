@@ -1,15 +1,11 @@
 package com.example.adorno.DTO;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
-
 import com.example.adorno.modelo.Marca;
 
 /**
  * A DTO for the {@link com.example.adorno.modelo.Movil} entity
  */
 
-public record MovilDto(Marca marca, String modelo, ProcesadorDto nucleosProcesador, long almacenamiento, long ram, float precio) {
+public record MovilDto(Marca marca, String modelo, ProcesadorDto nucleosProcesador, long almacenamiento, long ram,
+                       float precio) {
 }

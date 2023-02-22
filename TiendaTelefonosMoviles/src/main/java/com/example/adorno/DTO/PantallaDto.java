@@ -1,7 +1,5 @@
 package com.example.adorno.DTO;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
 /**

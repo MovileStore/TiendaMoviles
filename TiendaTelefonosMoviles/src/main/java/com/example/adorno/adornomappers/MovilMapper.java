@@ -1,10 +1,9 @@
-package com.example.adornomappers;
+package com.example.adorno.adornomappers;
 
 import java.util.LinkedHashMap;
 
 import com.example.adorno.DTO.MovilDto;
 import com.example.adorno.modelo.Marca;
-import com.example.adorno.modelo.Movil;
 
 public class MovilMapper implements BaseMapper<MovilDto, LinkedHashMap>{
 

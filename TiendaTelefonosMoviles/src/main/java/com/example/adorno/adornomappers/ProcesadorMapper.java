@@ -1,9 +1,8 @@
-package com.example.adornomappers;
+package com.example.adorno.adornomappers;
 
 import java.util.LinkedHashMap;
 
 import com.example.adorno.DTO.ProcesadorDto;
-import com.example.adorno.modelo.Procesador;
 
 public class ProcesadorMapper implements BaseMapper<ProcesadorDto, LinkedHashMap> {
 
