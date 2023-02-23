@@ -52,7 +52,7 @@ public class MovilControllerTest {
         assert listaMovilesResponseEntity != null;
         List movilBody = listaMovilesResponseEntity.getBody();
 
-        List<MovilDto> movilesMapped = movilBody.stream().map((hashmap) -> new MovilMapper().map((LinkedHashMap) hashmap)).toList();
+        List movilesMapped = movilBody.stream().map((hashmap) -> new MovilMapper().map((LinkedHashMap) hashmap)).toList();
 
         ArrayList<MovilDto> listaMovilDto = new ArrayList<MovilDto>(movilesMapped);
         Assert.assertEquals(listaMovilDto.size(), 1);

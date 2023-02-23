@@ -34,4 +34,8 @@ public class MovilFilter {
 	public void setPrecio(Range<Float> precio) {
 		this.precio=precio;
 	}
+
+	public void isBetween(float min, float max) {
+
+	}
 }
