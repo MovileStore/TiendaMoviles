@@ -59,8 +59,19 @@ public class MovilService {
         List<Movil> listaMovilesByPrecio = movilRepository.findByPrecioGreaterThanAndPrecioLessThan(movilFilter.getPrecio().getMin(), movilFilter.getPrecio().getMax());
         List<Movil> filterByMarca = listaMovilesByPrecio.stream().filter((marca) -> movilFilter.getMarca().equals(marcaBusqueda)).toList();
         //Hay un problema con este filtro por que el el .isBetween intenta accedera a la clase de Long y no existe ningun metodo asi en la clase
-        List<Movil> filterByRAM = filterByMarca.stream().filter((ram) -> movilFilter.getRam().isBetween(ram)).toList();
+        //List<Movil> filterByRAM = filterByMarca.stream().filter((ram) -> movilFilter.getRam().isBetween(ram)).toList();
         return null;
     }
+    
+    public Optional<List<Movil>> getMovileFilter(MovilFilter movilFilter) {
+        /*.filter((ram)->{movilFilter.getRam().isBetween(movil.getRam());}).filter((nfc)->{movilFilter.hasNfc().equals(movil.getNfc);});*/
+        List<Movil> listaFiltradata;
+        List<Movil> listaMovilesByPrecio = movilRepository.findByPrecioGreaterThanAndPrecioLessThan(movilFilter.getPrecio().getMin(), movilFilter.getPrecio().getMax());
+        List<Movil> filterByMarca = listaMovilesByPrecio.stream().filter((marca) -> movilFilter.getMarca().equals(marca)).toList();
+        //Hay un problema con este filtro por que el el .isBetween intenta accedera a la clase de Long y no existe ningun metodo asi en la clase
+        //List<Movil> filterByRAM = filterByMarca.stream().filter((ram) -> movilRepository.findByRamBetween(movilFilter.getRam().getMin(), movilFilter.getRam().getMax())).toList();
+        return null;
+    }
+
 
 }
