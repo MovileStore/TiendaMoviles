@@ -25,6 +25,5 @@ public class Range<T> {
 	public void setMax(T max) {
 		this.max = max;
 	}
-	
-	
+		
 }
