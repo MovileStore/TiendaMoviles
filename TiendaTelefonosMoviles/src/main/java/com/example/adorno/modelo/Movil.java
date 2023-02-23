@@ -9,8 +9,6 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Builder
 @Data
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Movil {
     @Id
@@ -22,14 +20,14 @@ public class Movil {
     private String nombre;
 
     @Column(name = "ALMACENAMIENTO", nullable = false)
-    private int almacenamiento;
+    private long almacenamiento;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Pantalla")
     private Pantalla pantalla;
 
     @Column(name = "PULGADAS_PANTALLA", nullable = false)
-    private Float pulgadasPantalla;
+    private long pulgadasPantalla;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Procesador")
     private Procesador procesador;
@@ -48,23 +46,46 @@ public class Movil {
     private float precio;
 
 
-    public Movil(long id, String nombre, Marca marca, String fecha_lanazamiento, long ram, int almacenamiento, long bateria, Pantalla pantalla, float pulgadasPantalla, Procesador procesador, long camara, long alto, long ancho, long grosor, long peso, boolean nfc, float precio) {
+    public Movil(long id, Marca marca, String nombre, long almacenamiento, Pantalla pantalla, long pulgadasPantalla, Procesador procesador, long ram, long bateria, long camara, boolean nfc, String fecha_lanazamiento, long alto, long ancho, long grosor, long peso, float precio) {
         this.id = id;
-        this.nombre = nombre;
         this.marca = marca;
-        this.fecha_lanazamiento = fecha_lanazamiento;
-        this.ram = ram;
+        this.nombre = nombre;
         this.almacenamiento = almacenamiento;
-        this.bateria = bateria;
         this.pantalla = pantalla;
         this.pulgadasPantalla = pulgadasPantalla;
         this.procesador = procesador;
+        this.ram = ram;
+        this.bateria = bateria;
         this.camara = camara;
+        this.nfc = nfc;
+        this.fecha_lanazamiento = fecha_lanazamiento;
         this.alto = alto;
         this.ancho = ancho;
         this.grosor = grosor;
         this.peso = peso;
-        this.nfc = nfc;
         this.precio = precio;
+    }
+
+    public Movil(Marca marca, String nombre, long almacenamiento, Pantalla pantalla, long pulgadasPantalla, Procesador procesador, long ram, long bateria, long camara, boolean nfc, String fecha_lanazamiento, long alto, long ancho, long grosor, long peso, float precio) {
+        this.marca = marca;
+        this.nombre = nombre;
+        this.almacenamiento = almacenamiento;
+        this.pantalla = pantalla;
+        this.pulgadasPantalla = pulgadasPantalla;
+        this.procesador = procesador;
+        this.ram = ram;
+        this.bateria = bateria;
+        this.camara = camara;
+        this.nfc = nfc;
+        this.fecha_lanazamiento = fecha_lanazamiento;
+        this.alto = alto;
+        this.ancho = ancho;
+        this.grosor = grosor;
+        this.peso = peso;
+        this.precio = precio;
+    }
+
+    public Movil() {
+
     }
 }

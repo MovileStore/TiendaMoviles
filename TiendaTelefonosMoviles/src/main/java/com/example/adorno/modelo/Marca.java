@@ -1,27 +1,25 @@
 package com.example.adorno.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
 public class Marca {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @OneToMany(mappedBy = "marca")
+    private List<Movil> movil;
 
     String nombre;
 
-    public Marca() {
-    }
+    public Marca() {}
 
-    public Marca(String nombre) {
+    public Marca(long id, String nombre) {
+        this.id = id;
         this.nombre = nombre;
     }
-
-
 }
