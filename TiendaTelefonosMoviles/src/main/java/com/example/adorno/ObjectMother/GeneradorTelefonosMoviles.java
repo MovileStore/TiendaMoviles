@@ -56,8 +56,6 @@ public class GeneradorTelefonosMoviles {
         int generaNumeroMoviles = 10;
 
         for (int i = 0; i < generaNumeroMoviles; i++) {
-            //Movil m = new Movil(nombresModeloMovil[r.nextInt(nombresModeloMovil.length)], fechaLanzamiento[r.nextInt(fechaLanzamiento.length)], ram[r.nextInt(ram.length)], almacenamiento[r.nextInt(almacenamiento.length)], bateria[r.nextInt(bateria.length)], pulgadas[r.nextInt(pulgadas.length)], alto[r.nextInt(alto.length)], ancho[r.nextInt(ancho.length)], grosor[r.nextInt(grosor.length)], peso[r.nextInt(peso.length)], camara[r.nextInt(camara.length)], nfc, precio[r.nextInt(precio.length)], listaMarcas.get(r.nextInt(listaMarcas.size())), listaPantalla.get(r.nextInt(listaPantalla.size())), listaProcesador.get(r.nextInt(listaProcesador.size())));
-            //Marca marca, String nombre, int almacenamiento, Pantalla pantalla, Float pulgadasPantalla, Procesador procesador, long ram, long bateria, long camara, boolean nfc, String fecha_lanazamiento, long alto, long ancho, long grosor, long peso, float precio
             Movil m = new Movil(listaMarcas.get(r.nextInt(listaMarcas.size())), nombresModeloMovil[r.nextInt(nombresModeloMovil.length)], almacenamiento[r.nextInt(almacenamiento.length)], listaPantalla.get(r.nextInt(listaPantalla.size())), pulgadas[r.nextInt(pulgadas.length)], listaProcesador.get(r.nextInt(listaProcesador.size())), ram[r.nextInt(ram.length)], bateria[r.nextInt(bateria.length)], camara[r.nextInt(camara.length)], nfc, fechaLanzamiento[r.nextInt(fechaLanzamiento.length)], alto[r.nextInt(alto.length)], ancho[r.nextInt(ancho.length)], grosor[r.nextInt(grosor.length)], peso[r.nextInt(peso.length)], precio[r.nextInt(precio.length)]);
             listaM.add(m);
         }
