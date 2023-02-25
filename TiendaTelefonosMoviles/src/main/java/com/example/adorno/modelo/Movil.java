@@ -1,10 +1,10 @@
 package com.example.adorno.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 
 @Entity
 @Builder
@@ -14,7 +14,9 @@ public class Movil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "Marca")
     private Marca marca;
     private String nombre;
@@ -22,19 +24,23 @@ public class Movil {
     @Column(name = "ALMACENAMIENTO", nullable = false)
     private long almacenamiento;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Pantalla")
+    //@ManyToOne(cascade = CascadeType.ALL)
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Pantalla", nullable = false)
     private Pantalla pantalla;
 
     @Column(name = "PULGADAS_PANTALLA", nullable = false)
     private long pulgadasPantalla;
-    @ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "Procesador")
     private Procesador procesador;
 
     private long ram;
     private long bateria;
-
     private long camara;
     private boolean nfc;
     private String fecha_lanazamiento;
@@ -85,7 +91,5 @@ public class Movil {
         this.precio = precio;
     }
 
-    public Movil() {
-
-    }
+    public Movil() {}
 }

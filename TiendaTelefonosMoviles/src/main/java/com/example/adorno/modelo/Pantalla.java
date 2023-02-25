@@ -18,8 +18,7 @@ public class Pantalla {
     @NonNull
     private String tech_pantalla;
 
-    public Pantalla() {
-    }
+    public Pantalla() {}
 
     public Pantalla(long id, @NonNull String tech_pantalla) {
         this.id = id;
