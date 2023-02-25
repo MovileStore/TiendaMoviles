@@ -2,6 +2,7 @@ package com.example.adorno.Services;
 
 import com.example.adorno.filter.MovilFilter;
 import com.example.adorno.modelo.Movil;
+import com.example.adorno.modelo.movilesComparados;
 import com.example.adorno.repositorios.MovilRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,13 @@ public class MovilService {
 
         return Optional.ofNullable(movilRepository.findAllByNfcIs(nfc));
     }
-
+    
+    public Optional<movilesComparados> getMovilesComparados(long idDispositivoA, long idDispositivoB){
+    	movilesComparados movilesComparados = new movilesComparados(null, null);
+		movilesComparados.setDispositivoA(movilRepository.findById(idDispositivoA));
+    	movilesComparados.setDispositivoB(movilRepository.findById(idDispositivoB));
+        return Optional.ofNullable(movilesComparados);
+    }
     public Optional<List<Movil>> getMovileFilter(MovilFilter movilFilter, String marcaBusqueda, Long ramBusqueda) {
         /*.filter((ram)->{movilFilter.getRam().isBetween(movil.getRam());}).filter((nfc)->{movilFilter.hasNfc().equals(movil.getNfc);});*/
         List<Movil> listaFiltradata;
