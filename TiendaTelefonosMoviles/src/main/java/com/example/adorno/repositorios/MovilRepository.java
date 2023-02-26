@@ -16,5 +16,5 @@ public interface MovilRepository extends CrudRepository<Movil, Long> {
 
     List<Movil> findByRamGreaterThanAndRamLessThan(float min, float max);
 
-    List<Movil> findAllByNfcIs(boolean nfc);
+    List<Movil> findByNfcIs(boolean nfc);
 }
