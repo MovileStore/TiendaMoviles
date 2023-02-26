@@ -4,7 +4,6 @@ import com.example.adorno.Services.MovilService;
 import com.example.adorno.UpdateMovil.UpdateMovilRequest;
 import com.example.adorno.modelo.Movil;
 import com.example.adorno.modelo.movilesComparados;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -71,13 +70,13 @@ public class MovilController {
         }
         return new ResponseEntity<>(movilService.getMovilesByRAM(min, max).get(), HttpStatus.OK);
     }
-    
+
     @GetMapping("/get/movilesComparados/{idDispositivoA}-{idDispositivoB}")
-    public ResponseEntity<movilesComparados<Movil>> getMovilesComparadosByIDs(Long idA, Long idB){
-        if(movilService.getMovilesComparados(idA, idB).isEmpty()){
+    public ResponseEntity<movilesComparados<Movil>> getMovilesComparadosByIDs(@PathVariable("idDispositivoA") Long idDispositivoA, @PathVariable("idDispositivoB") Long idDispositivoB) {
+        if (movilService.getMovilesComparados(idDispositivoA, idDispositivoB).isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(movilService.getMovilesComparados(idA, idB).get(), HttpStatus.OK);
+        return new ResponseEntity<>(movilService.getMovilesComparados(idDispositivoA, idDispositivoB).get(), HttpStatus.OK);
     }
 
 }

@@ -71,9 +71,9 @@ public class MovilService {
         //List<Movil> filterByRAM = filterByMarca.stream().filter((ram) -> movilFilter.getRam().isBetween(ram)).toList();
         return null;
     }
-    
-    public Optional<List<Movil>> getMovileFilter(MovilFilter movilFilter) {
-        /*.filter((ram)->{movilFilter.getRam().isBetween(movil.getRam());}).filter((nfc)->{movilFilter.hasNfc().equals(movil.getNfc);});*/
+
+    /*public Optional<List<Movil>> getMovileFilter(MovilFilter movilFilter) {
+     *//*.filter((ram)->{movilFilter.getRam().isBetween(movil.getRam());}).filter((nfc)->{movilFilter.hasNfc().equals(movil.getNfc);});*//*
         List<Movil> listaFiltrada;
         if(movilFilter.getPrecio() == new Range<Float>(null, null)) {
         	
@@ -104,7 +104,7 @@ public class MovilService {
         	listaFiltrada=filterByNfc;
         }
         return listaFiltrada;
-    }
+    }*/
 
 
 }
