@@ -1,7 +1,10 @@
 package com.example.adorno.Controller;
 
+import com.example.adorno.DTO.MovilDto;
 import com.example.adorno.Services.MovilService;
 import com.example.adorno.UpdateMovil.UpdateMovilRequest;
+import com.example.adorno.filter.MovilFilter;
+import com.example.adorno.filter.Range;
 import com.example.adorno.modelo.Movil;
 import com.example.adorno.modelo.movilesComparados;
 import lombok.extern.slf4j.Slf4j;
@@ -69,6 +72,22 @@ public class MovilController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(movilService.getMovilesByRAM(min, max).get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/get/getFiveMoviles")
+    public ResponseEntity<List<MovilDto>> getFiveMoviles() {
+
+        return new ResponseEntity<>(movilService.getFiveMovil().get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/get/getMovilesFilter/")
+    public ResponseEntity<List<Movil>> getMovilesByFilter(@RequestParam("Pmin") long Pmin, @RequestParam("Pmax") long Pmax, @RequestParam("Marca") String Marca, @RequestParam("RAMMin") long RAMMin, @RequestParam("RAMMax") long RAMMax, @RequestParam("nfc") Boolean nfc) {
+
+        MovilFilter movilFilter = new MovilFilter((new Range<>(Pmin, Pmax)), Marca, new Range<>(RAMMin, RAMMax), nfc);
+        if (movilService.getMovileFilter(movilFilter).isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(movilService.getMovilesFilterBy(movilFilter).get(), HttpStatus.OK);
     }
 
     @GetMapping("/get/movilesComparados/{idDispositivoA}-{idDispositivoB}")
