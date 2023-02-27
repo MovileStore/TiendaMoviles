@@ -1,20 +1,11 @@
 package com.example.adorno;
 
 import com.example.adorno.DTO.MovilDto;
-import com.example.adorno.ObjectMother.GeneradorMarcas;
-import com.example.adorno.ObjectMother.GeneradorPantalla;
-import com.example.adorno.ObjectMother.GeneradorProcesador;
-import com.example.adorno.ObjectMother.GeneradorTelefonosMoviles;
 import com.example.adorno.adornomappers.MovilMapper;
-import com.example.adorno.modelo.Marca;
-import com.example.adorno.modelo.Movil;
-import com.example.adorno.modelo.Pantalla;
-import com.example.adorno.modelo.Procesador;
 import com.example.adorno.repositorios.MarcaRepository;
 import com.example.adorno.repositorios.MovilRepository;
 import com.example.adorno.repositorios.PantallaRepository;
 import com.example.adorno.repositorios.ProcesadorRepository;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

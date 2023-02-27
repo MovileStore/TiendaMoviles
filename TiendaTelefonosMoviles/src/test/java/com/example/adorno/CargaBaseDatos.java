@@ -45,20 +45,11 @@ class CargaBaseDatos {
         List<Procesador> procesadores = GeneradorProcesador.generarProcesador();
         List<Movil> moviles = GeneradorTelefonosMoviles.generarMoviles();
 
-        for (int i = 0; i < marcas.size(); i++) {
-            Marca marca = marcas.get(i);
-            marcaRepository.save(marca);
-        }
+        marcaRepository.saveAll(marcas);
 
-        for (int i = 0; i < pantallas.size(); i++) {
-            Pantalla pantalla = pantallas.get(i);
-            pantallaRepository.save(pantalla);
-        }
+        pantallaRepository.saveAll(pantallas);
 
-        for (int i = 0; i < procesadores.size(); i++) {
-            Procesador procesador = procesadores.get(i);
-            procesadorRepository.save(procesador);
-        }
+        procesadorRepository.saveAll(procesadores);
 
         for (int i = 0; i < moviles.size(); i++) {
             Movil m = moviles.get(i);

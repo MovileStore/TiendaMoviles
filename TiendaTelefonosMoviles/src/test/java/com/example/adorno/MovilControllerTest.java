@@ -1,20 +1,22 @@
 package com.example.adorno;
 
 import com.example.adorno.DTO.MovilDto;
-import com.example.adorno.repositorios.MovilRepository;
 import com.example.adorno.adornomappers.MovilMapper;
-import org.junit.After;
-import org.junit.Assert;
+import com.example.adorno.repositorios.MovilRepository;
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.testng.annotations.Test;
+
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * MovilController Tester.
@@ -36,15 +38,13 @@ public class MovilControllerTest {
 
     }
 
-    @After
-    public void after() throws Exception {
-    }
+
 
     /**
      * Method: getMoviles()
      */
 
-    @org.junit.Test
+
     @Test
     public void testGetMoviles() {
 
@@ -55,7 +55,7 @@ public class MovilControllerTest {
         List movilesMapped = movilBody.stream().map((hashmap) -> new MovilMapper().map((LinkedHashMap) hashmap)).toList();
 
         ArrayList<MovilDto> listaMovilDto = new ArrayList<MovilDto>(movilesMapped);
-        Assert.assertEquals(listaMovilDto.size(), 1);
+        assertEquals(listaMovilDto.size(), 1);
 
 
     }

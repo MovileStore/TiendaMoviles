@@ -12,9 +12,9 @@ public class MovilMapper implements BaseMapper<MovilDto, LinkedHashMap>{
 		// TODO Auto-generated method stub
 		return new MovilDto((Marca) v.get("marca"), (String) v.get("modelo"),
 				new ProcesadorMapper().map((LinkedHashMap) v.get("procesador_nucleos")),
-                Integer.valueOf(String.valueOf(v.get("almacenamiento"))),
-				Long.valueOf(String.valueOf(v.get("ram"))),
-                Float.valueOf(String.valueOf(v.get("precio")))
+                Integer.parseInt(String.valueOf(v.get("almacenamiento"))),
+				Long.parseLong(String.valueOf(v.get("ram"))),
+                Float.parseFloat(String.valueOf(v.get("precio")))
 		);
 	}
 
