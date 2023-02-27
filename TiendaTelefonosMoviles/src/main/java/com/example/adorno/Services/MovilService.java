@@ -2,12 +2,15 @@ package com.example.adorno.Services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Range;
 import org.springframework.stereotype.Service;
 
+import com.example.adorno.DTO.MovilDto;
+import com.example.adorno.DTO.ProcesadorDto;
 import com.example.adorno.filter.MovilFilter;
 import com.example.adorno.modelo.Movil;
 import com.example.adorno.modelo.movilesComparados;
@@ -36,7 +39,12 @@ public class MovilService {
         return Optional.empty();
     }
 
-    //CAMBIOS DE MARIO REVISAR
+    public Optional<List<MovilDto>> getFiveMovil() {
+        return Optional.of(StreamSupport.stream(movilRepository.findAll().spliterator(), false)
+                .map(movil -> new MovilDto(movil.getMarca(), movil.getNombre(), new ProcesadorDto(movil.getProcesador().getNumero_nucleos()),
+                        movil.getAlmacenamiento(), movil.getRam(), movil.getPrecio())).limit(5).toList());
+    }    
+    
     public Optional<List<Movil>> getMovilesByMarca(String marca) {
         return Optional.ofNullable(movilRepository.findByMarcaNombre(marca));
     }
